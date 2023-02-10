@@ -69,8 +69,22 @@ public class StreamBasics {
         // You read the above code as "filter out words that don't have 'o',
         // sort the results, output each element.
         // Get the results
+
+        // This pattern converts the example earlier to a collection instead of
+        // processing in a terminal operator. This is useful if you have other
+        // uses for the list at a later time.
         List<String> strList2 = strs.stream()
                                     .filter(s -> s.contains("o"))
+                                    .sorted((v1, v2) -> {
+                                        // For demonstration we'll sort by string length.
+                                        if (v1.length() > v2.length()) {
+                                            return 1;
+                                        } else if (v2.length() > v1.length()) {
+                                            return -1;
+                                        } else {
+                                            return 0;
+                                        }
+                                    })
                                     .collect(Collectors.toList());
 
         logger.info("Aggregation");

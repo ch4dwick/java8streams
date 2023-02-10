@@ -66,21 +66,23 @@ public class StreamBasics2 {
             .collect(toList());
 
         summaries.forEach(r -> {
-            logger.info(r.getRetailer());
-            logger.info(r.getBank().getBankName());
-            logger.info(r.getBank().getLoanAmount().toString());
+            System.out.println("Retailer: " + r.getRetailer());
+            System.out.println("Store: " + r.getStore());
+            System.out.println("Account No: " + r.getBank().getAccountNo());
+            System.out.println("Bank: " + r.getBank().getBankName());
+            System.out.println("Loan Amount: " + r.getBank().getLoanAmount().toString());
         });
    
     }
    
     // Intermediate operator for partial results
-    public static SettlementSummary myAccumulator(SettlementSummary bd, SettlementRecord sr) {
-        bd.getBank().setAccountNo(sr.getRetailer().getBankDetails().getAccountNo());
-        bd.getBank().setBankName(sr.getRetailer().getBankDetails().getBankName());
-        bd.getBank().setLoanAmount(bd.getBank().getLoanAmount().add(sr.getLoanAmount()));
-        bd.setRetailer(sr.getRetailer().getName());
-        bd.setStore(sr.getRetailer().getStoreName());
-        return bd;
+    public static SettlementSummary myAccumulator(SettlementSummary ss, SettlementRecord sr) {
+        ss.getBank().setAccountNo(sr.getRetailer().getBankDetails().getAccountNo());
+        ss.getBank().setBankName(sr.getRetailer().getBankDetails().getBankName());
+        ss.getBank().setLoanAmount(ss.getBank().getLoanAmount().add(sr.getLoanAmount()));
+        ss.setRetailer(sr.getRetailer().getName());
+        ss.setStore(sr.getRetailer().getStoreName());
+        return ss;
     }
    
     // Combine all the results
