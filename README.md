@@ -18,7 +18,7 @@ Consider the code in this repository. To better understand streams you should vi
    - c. The target object (SettlementSummary)
    - d. The accumulator or the intermediate logic that maps the SettlementRecord data to the SettlementSummary object then adds all the loan amounts (the first two mapping may seem redundant in a loop but Java uses this to identify related records). In other scenarios,
     this is used to map/transform one object to another. It is important to remember that at this point SettlementSummary addition in this part are for records sharing the same account number. (I know this appears like a mouthful. I'm working on it.)
-   e. The combiner that sums up all the loan amounts in SettlementSummary objects from the accumulator.
+   - e. The combiner that sums up all the loan amounts in SettlementSummary objects from the accumulator.
 
 5. The last four lines converts the result to a collection, convert it back to a stream so we can sort the output (note that we need to create our
 own sorting logic since this is a more complex object), then generate the list again. (The first collect() call creates a ConcurrentMap<> result which we don’t want in this use case).
