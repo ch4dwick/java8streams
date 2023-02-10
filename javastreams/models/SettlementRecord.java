@@ -1,11 +1,11 @@
-package javastreams;
+package javastreams.models;
 
 import java.math.BigDecimal;
 
 public class SettlementRecord {
     private Retailer retailer;
     private BigDecimal loanAmount = new BigDecimal(0);
-    public boolean filterOut = false;
+    private boolean filterOut = false;
     
     public Retailer getRetailer() {
         return retailer;
@@ -18,6 +18,9 @@ public class SettlementRecord {
     }
     public void setLoanAmount(BigDecimal loanAmount) {
         this.loanAmount = loanAmount;
+    }
+    public void setFilterOut(boolean filterOut) {
+        this.filterOut = filterOut;
     }
     public boolean isFilterOut() {
         return filterOut;

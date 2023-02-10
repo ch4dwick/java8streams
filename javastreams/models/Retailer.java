@@ -1,4 +1,4 @@
-package javastreams;
+package javastreams.models;
 
 public class Retailer {
     private Long id;
@@ -30,9 +30,7 @@ public class Retailer {
         this.bankDetails = bankDetails;
     }
 
-    
-
-    Retailer (String name) {
+    public Retailer (String name) {
         this.name = name;
     }
 
@@ -47,30 +45,4 @@ public class Retailer {
     public void setStoreName(String storeName) {
         this.storeName = storeName;
     }
-    
-    class BankDetails {
-        private Long id;
-        private String bankName;
-        private String accountNo;
-
-        public Long getId() {
-            return id;
-        }
-        public void setId(Long id) {
-            this.id = id;
-        }
-        public String getBankName() {
-            return bankName;
-        }
-        public void setBankName(String bankName) {
-            this.bankName = bankName;
-        }
-        public String getAccountNo() {
-            return accountNo;
-        }
-        public void setAccountNo(String accountNo) {
-            this.accountNo = accountNo;
-        }
-    }
-
 }

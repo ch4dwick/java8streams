@@ -1,4 +1,4 @@
-package javastreams;
+package javastreams.models;
 
 public class SettlementSummary {
     private Bank bank = new Bank();
@@ -28,5 +28,4 @@ public class SettlementSummary {
     public void setStore(String store) {
         this.store = store;
     }
-    
 }

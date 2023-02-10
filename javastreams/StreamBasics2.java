@@ -8,6 +8,14 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collector;
 
+import javastreams.models.Retailer;
+import javastreams.models.SettlementFile;
+import javastreams.models.SettlementRecord;
+import javastreams.models.SettlementSummary;
+
+/**
+ * Advanced Streaming by aggregating object data.
+ */
 public class StreamBasics2 {
     static Logger logger = Logger.getLogger(StreamBasics2.class.getName());
     public static void main(String ...args) {
@@ -81,8 +89,12 @@ public class StreamBasics2 {
         return dest;
     }
    
+    /**
+     * Mock data initialization.
+     * @return SettlementFile pre-populated data.
+     */
     public static SettlementFile initRecords() {
-        // Same retailer multiple entries
+        // Structure 1. Same retailer multiple entries
         SettlementFile file = new SettlementFile();
 
         Retailer r = new Retailer("Retailer 1");
@@ -137,7 +149,7 @@ public class StreamBasics2 {
         rec.setLoanAmount(BigDecimal.valueOf(1000.00));
         file.getSettlementRecords().add(rec);
     
-        // Retailers flagged as strict and different banks
+        // Structure 2. Retailers flagged as strict and different banks
         r = new Retailer("Retailer 2");
         r.setId(2l);
         r.getBankDetails().setId(2l);
@@ -145,7 +157,7 @@ public class StreamBasics2 {
         r.getBankDetails().setBankName("Bank 1");
         r.getBankDetails().setAccountNo("0002");
         rec = new SettlementRecord();
-        rec.filterOut = true;
+        rec.setFilterOut(true);
         rec.setRetailer(r);
         rec.setLoanAmount(BigDecimal.valueOf(2000.00));
         file.getSettlementRecords().add(rec);
@@ -158,7 +170,7 @@ public class StreamBasics2 {
         r.getBankDetails().setAccountNo("0003");
         rec = new SettlementRecord();
         rec.setRetailer(r);
-        rec.filterOut = true;
+        rec.setFilterOut(true);
         rec.setLoanAmount(BigDecimal.valueOf(2000.00));
         file.getSettlementRecords().add(rec);
     
@@ -169,12 +181,12 @@ public class StreamBasics2 {
         r.getBankDetails().setAccountNo("309200004767");
         r.setStoreName("Store 02");
         rec = new SettlementRecord();
-        rec.filterOut = true;
+        rec.setFilterOut(true);
         rec.setRetailer(r);
         rec.setLoanAmount(BigDecimal.valueOf(2000.00));
         file.getSettlementRecords().add(rec);
     
-        // Another Routine entry.
+        // Structure 3. Another Routine entry.
         r = new Retailer("Retailer 3");
         r.setId(3l);
         r.getBankDetails().setId(4l);
@@ -195,7 +207,7 @@ public class StreamBasics2 {
         rec.setLoanAmount(BigDecimal.valueOf(3000.00));
         file.getSettlementRecords().add(rec);
     
-        // Different retailer same bank accounts
+        // Structure 4. Different retailer same bank accounts
         r = new Retailer("Retailer 3");
         r.setId(3l);
         r.getBankDetails().setId(4l);

@@ -1,4 +1,4 @@
-package javastreams;
+package javastreams.models;
 
 import java.math.BigDecimal;
 
