@@ -1,6 +1,6 @@
 # Java Streams API
 
-This is an advanced example from the (java8filters)[https://github.com/ch4dwick/java8filters] Project.
+This is an advanced example from the [java8filters](https://github.com/ch4dwick/java8filters) Project.
 
 
 Use case:
