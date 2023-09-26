@@ -66,11 +66,11 @@ public class StreamBasics2 {
             .collect(toList());
 
         summaries.forEach(r -> {
-            System.out.println("Retailer: " + r.getRetailer());
-            System.out.println("Store: " + r.getStore());
-            System.out.println("Account No: " + r.getBank().getAccountNo());
-            System.out.println("Bank: " + r.getBank().getBankName());
-            System.out.println("Loan Amount: " + r.getBank().getLoanAmount().toString());
+            System.out.println("Retailer: " + r.getRetailer() 
+            + ", Store: " + r.getStore() 
+            + ", Account No: " + r.getBank().getAccountNo()
+            + ", Bank: " + r.getBank().getBankName()
+            + ", Loan Amount: " + r.getBank().getLoanAmount().toString());
         });
    
     }
